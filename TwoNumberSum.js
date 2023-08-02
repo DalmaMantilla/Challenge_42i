@@ -3,15 +3,14 @@ function twoNumberSum(arr, target) {
     const sums = new Set();
     sums.add(0);
 
-    const noRepeats = new Set(arr);
-    const arrNoRepeats = Array.from(noRepeats);
-    
-    for (let i = 0; i < arrNoRepeats.length; i++) {
+    const uniqueArr = [...new Set(arr)];
+  
+    for (let i = 0; i < uniqueArr.length; i++) {
       const sumsCopy = [...sums]  
       for (let j = 0; j < sumsCopy.length; j++) {
-        const actualSum = sumsCopy[j] + arrNoRepeats[i];
+        const actualSum = sumsCopy[j] + uniqueArr[i];
         if (actualSum === target) {
-          return [sumsCopy[j], arrNoRepeats[i]] ;
+          return [sumsCopy[j], uniqueArr[i]] ;
 
         } else {
           sums.add(actualSum)
